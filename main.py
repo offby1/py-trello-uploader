@@ -1,3 +1,8 @@
+from __future__ import print_function
+
+# Core
+import ast
+
 # 3rd-party
 from trello import TrelloClient
 
@@ -11,12 +16,16 @@ client = TrelloClient(
 board = client.get_board ('hPK2DcxK')
 print("About to munge {!r}".format(board.name))
 
-input_data = [{'name': 'Some Test Book', 'desc': '''
+input_data = [{'name': 'Some Test Book',
+               'desc': '''
 This is _such_ a great book!  Here's a quote from it:
 > Twas brillig, yo
 > The slithey toves
 > Were all like up in your shit
 '''}]
+
+with open('/private/tmp/wat') as inf:
+    input_data += ast.literal_eval(inf.read())
 
 lists = board.get_lists(None)
 if len(lists) != 1:
@@ -25,5 +34,8 @@ if len(lists) != 1:
 l = lists[0]
 print("List: {!r}".format(l))
 
+# Maybe delete all existing cards first?
 for book in input_data:
+    print("Adding {}... ".format(book['name']), end='')
     l.add_card(**book)
+    print("done")
