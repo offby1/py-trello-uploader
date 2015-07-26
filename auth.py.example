@@ -1,0 +1,11 @@
+# Replace the 'xyzzy' stuff with proper values, then rename to
+# auth.py. See
+# https://github.com/sarumont/py-trello#getting-your-trello-oauth-token
+# for instructions.
+
+py_trello_auth_dict = {
+    'api_key'      : 'xyzzyxyzzyxyzzy',
+    'api_secret'   : 'xyzzyxyzzyxyzzyxyzzyxyzzyxyzzy',
+    'token'        : 'xyzzyxyzzyxyzzyxyzzyxyzzyxyzzy',
+    'token_secret' : 'xyzzyxyzzyxyzzy'
+}
